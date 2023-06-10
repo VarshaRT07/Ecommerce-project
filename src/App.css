@@ -1,10 +1,48 @@
 .App {
   text-align: center;
+  align-items: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.navbar{
+  display: flex;
+  justify-content: space-between;
+  margin: 0px 70px;
+  align-items: center;
+  padding-bottom: 30px;
+
+}
+.container{
+  display: flex;
+}
+.sneakers{
+  font-size: 29px;
+}
+.profile img{
+  margin: 0px 20px;
+  cursor: pointer;
+ 
+}
+.cart{
+ padding-bottom: 10px;
+}
+.avatar{
+  width: 50px;
+  height: 50px;
+}
+
+ul{
+  display: flex;
+  margin-top: 25px;
+}
+li {
+  list-style: none;
+  margin: 10px;
+  padding: 0px 8px; 
+
+}
+li a{
+  text-decoration: none;
+  color: #555;
 }
 
 @media (prefers-reduced-motion: no-preference) {
