@@ -1,11 +1,18 @@
 .cartcard{
-    display: block;
+   
+    position: fixed;
+    margin: 80px;
+    margin-left: 900px;
+    top: 0;
+    left: 0;
+    /* justify-content: center;
+    align-items: center; */
     width: 350px;
     height: 250px;
     background: rgb(255, 255, 255);
     text-align: center;
     border-radius: 6px;
-    box-shadow: 0rem 1rem 2rem rgba(0, 0, 0, 0.15);
+    box-shadow: 0rem 1rem 2rem rgba(0, 0, 0, 0.15); 
     
 }
 .carttitle{
@@ -20,6 +27,7 @@
 .cart-info{
     display: flex;
     gap:3px;
+    margin: 20px 0px;
 }
 .shoe{
     width: 50px;

@@ -2,14 +2,15 @@ import React from 'react'
 import {useState} from 'react'
 import './Cart.css'
 
-export default function Cart(showComponent) {
-    const [cart,setCart]= useState([])
-    const [activecart,setActiveCart]= useState(showComponent);
+export default function Cart({show,cost,activecart}) {
+    const [cart,setCart]= useState(activecart)
+   
+    
 
     
   return (
     <div className="cartcard">
-   {activecart && <div className="emptycart">
+   {cart && <div className="emptycart">
       <div>
         <h4 className='carttitle'>Cart</h4>
       </div>
@@ -19,7 +20,7 @@ export default function Cart(showComponent) {
       </div>
       </div>}
 
-     {activecart && <div className="prdcart">
+     {!cart && <div className="prdcart">
       <div>
         <h4 className='carttitle'>Cart</h4>
       </div>
@@ -34,10 +35,10 @@ export default function Cart(showComponent) {
               <div class="price-info">
                 <p>
                 Fall Limited Edition Sneakers
-                $125.00 × <span id="quantity">2</span> <span id="total">$250</span></p>
+                $125.00 × <span id="quantity">2</span> <span id="total">${cost}</span></p>
               </div>
               <div className="icons">
-               <img src="images/icon-delete.svg" alt="icon-delete" class="delete-icon"/>
+               <img src="images/icon-delete.svg" alt="icon-delete" class="delete-icon" onClick={() => setCart(true)}/>
               </div>
             </div>
 

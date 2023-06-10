@@ -1,10 +1,36 @@
 import Home from './components/Home';
 import Cart from './components/Cart';
 import './App.css';
-import {useState} from 'react'
+import {useState,useEffect} from 'react'
 
 function App() {
   const [showComponent, setShowComponent] = useState(false);
+  const[counter,setcounter]=useState(0);
+  
+  if(counter<0){
+    setcounter(0);
+  }
+
+  const incre=()=>{
+    setcounter((prev)=>prev+1)
+  }
+  const decre=()=>{
+    setcounter((prev)=>prev-1)
+  }
+
+  const [activecart,setActiveCart]= useState(true);
+
+  const[cost,setcost]=useState(0);
+    
+   
+  const addtocart =()=>{
+    setActiveCart(false)
+    setcost(counter *125);
+
+  }
+  useEffect(() => {
+    console.log(cost);
+  }, [cost]);
 
   
   return (
@@ -26,12 +52,13 @@ function App() {
     </div>
     </div>
     <div className="profile">
-    <img src="/images/icon-cart.svg"  className="cart" alt=""onClick={()=> setShowComponent(true)} />
+    <img src="/images/icon-cart.svg"  className="cart" alt="" onClick={()=> setShowComponent(prevState => !prevState)} />
     <img src="/images/image-avatar.png" alt="" className="avatar" />
-    {showComponent && <Cart/>}
+    {showComponent && <Cart show={showComponent} activecart={activecart} cost={cost} />}
+    
     </div>
     </nav>
-      <Home></Home>
+      <Home incre={incre} decre={decre} counter={counter} addtocart={addtocart} ></Home>
     </div>
   
 

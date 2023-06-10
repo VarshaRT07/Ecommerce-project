@@ -1,21 +1,15 @@
 import React from 'react'
 import './Home.css'
 import {useState,useEffect} from 'react'
+import Cart from './Cart';
 
-export default function Home() {
-    const[counter,setcounter]=useState(0);
-    const[cost,setcost]=useState(0);
+export default function Home({incre,decre,counter,addtocart}) {
+  const [showComp, setShowComp] = useState(false);
+  const [activecart,setActiveCart]= useState(true);
+
     
-    if(counter<0){
-      setcounter(0);
-    }
-  const addtocart =()=>{
-    
-    setcost(counter *125);
-  }
-  useEffect(() => {
-    console.log(cost);
-  }, [cost]);
+   
+  
 
   const [mainImage, setMainImage] = useState('/images/image-product-1.jpg');
 
@@ -63,9 +57,9 @@ export default function Home() {
         <div className='order-buttons'>
           
           <div className='counter-comp'>
-          <button id="decrement" onClick={() =>setcounter((prev)=>prev-1)}>-</button>
+          <button id="decrement" onClick={decre}>-</button>
          <input type="text" id="counter" value={counter}/>
-         <button id="increment" onClick={() =>setcounter((prev)=>prev+1)}>+</button>
+         <button id="increment" onClick={incre}>+</button>
           </div>
          
           <button className="addtocart" onClick={addtocart}>

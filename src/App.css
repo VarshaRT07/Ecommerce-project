@@ -11,6 +11,9 @@
   padding-bottom: 30px;
 
 }
+.cartpart{
+  position: relative;
+}
 .container{
   display: flex;
 }
