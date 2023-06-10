@@ -1,12 +1,22 @@
 import React from 'react'
 import './Home.css'
-import {useState} from 'react'
+import {useState,useEffect} from 'react'
 
 export default function Home() {
-  const[counter,setcounter]=useState(0);
-  if(counter<0){
-    setcounter(0);
+    const[counter,setcounter]=useState(0);
+    const[cost,setcost]=useState(0);
+    
+    if(counter<0){
+      setcounter(0);
+    }
+  const addtocart =()=>{
+    
+    setcost(counter *125);
   }
+  useEffect(() => {
+    console.log(cost);
+  }, [cost]);
+
   const [mainImage, setMainImage] = useState('/images/image-product-1.jpg');
 
    const thumbnailImages=[
@@ -58,7 +68,7 @@ export default function Home() {
          <button id="increment" onClick={() =>setcounter((prev)=>prev+1)}>+</button>
           </div>
          
-          <button className="addtocart">
+          <button className="addtocart" onClick={addtocart}>
             Add to cart
             </button>
         </div>
