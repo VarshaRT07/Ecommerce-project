@@ -1,7 +1,12 @@
 import Home from './components/Home';
+import Cart from './components/Cart';
 import './App.css';
+import {useState} from 'react'
 
 function App() {
+  const [showComponent, setShowComponent] = useState(false);
+
+  
   return (
     <div className="App">
       <nav className="navbar">
@@ -21,8 +26,9 @@ function App() {
     </div>
     </div>
     <div className="profile">
-    <img src="/images/icon-cart.svg"  className="cart" alt="" />
-    <img src="/images/image-avatar.png" alt="" className="avatar"/>
+    <img src="/images/icon-cart.svg"  className="cart" alt=""onClick={()=> setShowComponent(true)} />
+    <img src="/images/image-avatar.png" alt="" className="avatar" />
+    {showComponent && <Cart/>}
     </div>
     </nav>
       <Home></Home>

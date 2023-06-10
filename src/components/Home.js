@@ -7,6 +7,20 @@ export default function Home() {
   if(counter<0){
     setcounter(0);
   }
+  const [mainImage, setMainImage] = useState('/images/image-product-1.jpg');
+
+   const thumbnailImages=[
+    {"src":"/images/image-product-1-thumbnail.jpg"},
+    {"src":"/images/image-product-2-thumbnail.jpg"},
+    {"src":"/images/image-product-3-thumbnail.jpg"},
+    {"src":"/images/image-product-4-thumbnail.jpg"}
+   ]
+  
+  const changeMainImage = (image) => {
+    setMainImage(image);
+  };
+
+ 
   
   
 
@@ -15,14 +29,16 @@ export default function Home() {
     <div className="home">
         <div className="image-container">
           <div>
-            <img src="/images/image-product-1.jpg" alt=""  className='mainprd'/>
+            <img src={mainImage} alt=""  className='mainprd'/>
           </div>
             <div className='container'>
-              <div><img src="/images/image-product-1-thumbnail.jpg" alt="" /></div>
-              <div><img src="/images/image-product-2-thumbnail.jpg" alt="" /></div>
-              <div><img src="/images/image-product-3-thumbnail.jpg" alt="" /></div>
-              <div><img src="/images/image-product-4-thumbnail.jpg" alt="" /></div>
-            </div>
+            {thumbnailImages.map((image, index) => (
+              <div key={index} onClick={() => changeMainImage(`/images/image-product-${index + 1}.jpg`)}>
+            <img src={image.src} alt={`Thumbnail ${index + 1}`} className="thumbnail"/>
+          </div>
+        ))}
+       
+        </div>
         </div>
         <div className="product-details">
           <h6 className="sneaker-title">Sneaker Company</h6>

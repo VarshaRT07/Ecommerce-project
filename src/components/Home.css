@@ -16,6 +16,7 @@
     height: 100px;
     margin: 10px;
     border-radius: 10px;
+    cursor: pointer;    
 }
 .container{
     margin: 10px 55px;
@@ -86,3 +87,7 @@ p{
     color: #ffffff;
     font-size: 16px;
 }
+.container div:active img {
+    border: 2px solid hsl(26, 100%, 55%);
+    opacity: 0.5;
+  }
