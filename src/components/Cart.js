@@ -2,11 +2,11 @@ import React from 'react'
 import {useState} from 'react'
 import './Cart.css'
 
-export default function Cart({show,cost,activecart}) {
+export default function Cart({show,cost,activecart,counter}) {
+  
     const [cart,setCart]= useState(activecart)
    
     
-
     
   return (
     <div className="cartcard">
@@ -35,10 +35,10 @@ export default function Cart({show,cost,activecart}) {
               <div class="price-info">
                 <p>
                 Fall Limited Edition Sneakers
-                $125.00 × <span id="quantity">2</span> <span id="total">${cost}</span></p>
+                $125.00 × <span id="quantity">{counter}</span> <span id="total">${cost}</span></p>
               </div>
               <div className="icons">
-               <img src="images/icon-delete.svg" alt="icon-delete" class="delete-icon" onClick={() => setCart(true)}/>
+               <img src="images/icon-delete.svg" alt="icon-delete" class="delete-icon" onClick={() => setCart(pervstate=>!pervstate)}/>
               </div>
             </div>
 

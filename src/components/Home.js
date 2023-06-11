@@ -1,14 +1,14 @@
 import React from 'react'
 import './Home.css'
-import {useState,useEffect} from 'react'
-import Cart from './Cart';
-
+import {useState} from 'react'
+import Modal from "./Modal"; 
+let index=1;
+  
 export default function Home({incre,decre,counter,addtocart}) {
   const [showComp, setShowComp] = useState(false);
-  const [activecart,setActiveCart]= useState(true);
+  
 
     
-   
   
 
   const [mainImage, setMainImage] = useState('/images/image-product-1.jpg');
@@ -24,7 +24,29 @@ export default function Home({incre,decre,counter,addtocart}) {
     setMainImage(image);
   };
 
- 
+  const frontScroll = () => {
+    if (index < 5) {
+      changeMainImage(`/images/image-product-${index}.jpg`);
+    }
+    if (index === 5) {
+      changeMainImage(`/images/image-product-${1}.jpg`);
+      index = 1;
+    }
+    console.log(index)
+    index += 1;
+  };
+
+  const backScroll = () => {
+    if (index < 5) {
+      changeMainImage(`/images/image-product-${index}.jpg`);
+    }
+    if (index === 0) {
+      changeMainImage(`/images/image-product-${4}.jpg`);
+      index = 4;
+    }
+    console.log(index)
+    index -= 1;
+  };
   
   
 
@@ -32,9 +54,13 @@ export default function Home({incre,decre,counter,addtocart}) {
   return (
     <div className="home">
         <div className="image-container">
-          <div>
-            <img src={mainImage} alt=""  className='mainprd'/>
-          </div>
+        <div>
+          <img src={mainImage}
+            onClick={() => setShowComp(true)}
+            alt="main"
+            className="mainprd"
+          />
+        </div>
             <div className='container'>
             {thumbnailImages.map((image, index) => (
               <div key={index} onClick={() => changeMainImage(`/images/image-product-${index + 1}.jpg`)}>
@@ -53,7 +79,7 @@ export default function Home({incre,decre,counter,addtocart}) {
           <h2>$125.00</h2>
           <h5 id="offer">50%</h5>
         </div>
-        <p>$250.00</p>
+        <p className="pastvalue">$250.00</p>
         <div className='order-buttons'>
           
           <div className='counter-comp'>
@@ -65,12 +91,49 @@ export default function Home({incre,decre,counter,addtocart}) {
           <button className="addtocart" onClick={addtocart}>
             Add to cart
             </button>
+        </div>  
         </div>
 
-      
-        
-          
-        </div>
+        {showComp && (
+        <Modal>
+          <div className="modal-component">
+           
+               <div className="cross" onClick={() => setShowComp(false)}>
+              X
+            </div>
+            <div className="front-scroll" onClick={frontScroll}>{`>`}</div>
+            <div className="back-scroll" onClick={backScroll}>{`<`}</div>
+            
+           
+           <div>
+              <img src={mainImage} alt="" className="mainprd" />
+            </div>
+            <div
+              className="container"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              {thumbnailImages.map((image, index) => (
+                <div
+                  key={index}
+                  onClick={() =>
+                    changeMainImage(`/images/image-product-${index + 1}.jpg`)
+                  }
+                >
+                  <img
+                    src={image.src}
+                    alt={`Thumbnail ${index + 1}`}
+                    className="thumbnail"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </Modal>
+      )}
     </div>
   )
 }

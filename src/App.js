@@ -24,7 +24,7 @@ function App() {
     
    
   const addtocart =()=>{
-    setActiveCart(false)
+    setActiveCart(false);
     setcost(counter *125);
 
   }
@@ -54,10 +54,11 @@ function App() {
     <div className="profile">
     <img src="/images/icon-cart.svg"  className="cart" alt="" onClick={()=> setShowComponent(prevState => !prevState)} />
     <img src="/images/image-avatar.png" alt="" className="avatar" />
-    {showComponent && <Cart show={showComponent} activecart={activecart} cost={cost} />}
+    {showComponent && <Cart show={showComponent} activecart={activecart} cost={cost} counter={counter} />}
     
     </div>
     </nav>
+    <hr />
       <Home incre={incre} decre={decre} counter={counter} addtocart={addtocart} ></Home>
     </div>
   
